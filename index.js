@@ -1,12 +1,12 @@
 const carousel = document.querySelector('.carousel'),
-queries = ['screen', 'mountain', 'snow', 'people', 'ball'],
+queries = ['rain', 'mountain', 'snow', 'desert', 'ocean'],
 initMeasurements = window.innerWidth + 'x' + window.innerHeight;
 
 adjCSS('imgWidth', window.innerWidth);
 adjCSS('imgHeight', window.innerHeight);
 
 queries.forEach(function(query) {
-    carousel.innerHTML += `<div class="slide" style="background: #fff url('http://source.unsplash.com/random/`+ initMeasurements + '?' + query + `') no-repeat center"></div>`
+    carousel.innerHTML += `<div class="slide" style="background: #222 url('http://source.unsplash.com/random/`+ initMeasurements + '?' + query + `') no-repeat center"></div>`
 });
 
 document.querySelector('.slide').classList.add('active');

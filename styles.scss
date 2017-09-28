@@ -1,3 +1,7 @@
+html {
+    background-color: #222;
+}
+
 :root {
     --imgHeight: 0;
     --imgWidth: 0;
@@ -10,25 +14,20 @@ body {
 .carousel-container {
     margin: 0;
     padding: 0;
-    // position: relative;
     .carousel {
-        background-color: #222 !important;
         display: inline-block;
         position: absolute;
         top: 0;
         left: 0;
         padding: 0;
         .slide {       
-            background-color: #222 !important;     
             width: var(--imgWidth);
             height: var(--imgHeight);
-            // display: inline-block;
             position: absolute;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
         .slide.active {
-            background-color: #222 !important;
             z-index: 100;
             opacity: 1;
         }
@@ -43,14 +42,16 @@ body {
                 color: black;
                 cursor: pointer;
                 transition: 0.2s;
+                transition: background-color 0.19s ease-in-out;
                 &:hover {
                     i {
-                        display: inline;
+                        opacity: 1;
                     }
                     background-color: rgba(0,0,0, 0.2);
                 }
                 i {
-                    display: none;
+                    opacity: 0;
+                    transition: opacity 0.19s ease-in-out;
                     color: white;
                     position: relative;
                     top: 50%;
@@ -62,12 +63,12 @@ body {
                 transform: translateX(-100%);
                 left: var(--imgWidth);
                 i {
-                    text-shadow: -3px 1px 6px black;
+                    text-shadow: -1px 1px 0px black;
                 } 
             }
             .go-left {
                 i {
-                    text-shadow: 3px 1px 6px black;
+                    text-shadow: 1px 1px 0px black;
                 }
             }
         }
