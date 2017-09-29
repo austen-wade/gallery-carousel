@@ -1,5 +1,5 @@
 const carousel = document.querySelector('.carousel'),
-queries = ['rain', 'mountain', 'snow', 'desert', 'ocean', 'forest', 'winter', 'field', 'autumn'],
+queries = ['sun+day', 'sun+mountain', 'sun+snow', 'sun+desert', 'sun+ocean', 'sun+forest', 'sun+winter', 'sun+field', 'sun+autumn'],
 initMeasurements = window.innerWidth + 'x' + window.innerHeight,
 bubbleRow = document.querySelector('.bubble-row');
 let startX;
