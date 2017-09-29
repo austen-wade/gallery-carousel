@@ -38,11 +38,11 @@ body {
                 height:60%;
                 width: 60%;
                 border: 1px solid rgb(40, 180, 120);
+                transition: border-color 0.2s ease-in;
             }
             &:hover {
                 .marker {
-                    height: 50%;
-                    width: 50%;
+                    border: 1px solid rgb(180, 30, 100);
                 }
             }
         }
