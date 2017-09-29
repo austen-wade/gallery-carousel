@@ -1,6 +1,5 @@
 # Gallery of images carousel
 This carousel of images uses HTML, SCSS and vanilla (ES6) Javascript.
--
 Images are provided by source.unsplash.com/random
 
 ## Functionality
