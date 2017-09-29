@@ -40,15 +40,15 @@ window.addEventListener('keydown', function(e) {
 })
 
 // initiate mobile UI
-document.addEventListener("touchstart", touch2Mouse, true);
-document.addEventListener("touchmove", touch2Mouse, true);
-document.addEventListener("touchend", touch2Mouse, true);
-document.addEventListener('mousedown', mousedownHandler, true);
+carousel.addEventListener("touchstart", touch2Mouse, true);
+carousel.addEventListener("touchmove", touch2Mouse, true);
+carousel.addEventListener("touchend", touch2Mouse, true);
+carousel.addEventListener('mousedown', mousedownHandler, true);
 
 
 function mousedownHandler(e) {
     startX = e.clientX;
-    document.addEventListener('mouseup', mouseupHandler, true);
+    carousel.addEventListener('mouseup', mouseupHandler, true);
 }
 function mouseupHandler(e) {
     if (startX > e.clientX && e.clientX < window.innerWidth/2) {
@@ -113,14 +113,13 @@ function moveSlide(direction, target) {
 function adjCSS(name, value) {
     document.documentElement.style.setProperty(`--${name}`, value + 'px');
 }
-
 function bubbleChange(e) {
     let node = e.target;
     document.querySelector('.bubble.active').classList.remove('active');
     document.querySelector('.slide.active').classList.remove('active');
 
     var i=0, e=node;
-    while (e = e.previousSibling) { console.log(i); ++i;}
+    while (e = e.previousSibling) { ++i;}
 
     node.classList.add('active');
     slides[i].classList.add('active');

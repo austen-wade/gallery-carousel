@@ -16,9 +16,14 @@ body {
         bottom: 10px;
         left: calc(var(--imgWidth)/2);
         transform: translateX(-50%);
-        width: var(--imgWidth);
+        height: 50px;
+        width: 60%;
         text-align: center;
         .bubble {
+            position: relative;
+            top: 50%;
+            transform: translateY(-60%);
+            cursor: pointer;
             display: inline-block;
             background-color: rgb(255, 255, 255);
             opacity: 0.3;
