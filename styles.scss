@@ -151,10 +151,5 @@ body {
     .bubble-row {
         left: calc(var(--imgWidth)/2);
         width: 101%;
-        .bubble.active {
-            .marker {
-                border: 1px solid rgb(180, 30, 100);
-            }
-        }
     }
 }
