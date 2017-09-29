@@ -1,5 +1,5 @@
 const carousel = document.querySelector('.carousel'),
-queries = ['rain', 'mountain', 'snow', 'desert', 'ocean', 'forest', 'garden', 'field', 'sand'],
+queries = ['rain', 'mountain', 'snow', 'desert', 'ocean', 'forest', 'garden', 'field', 'autumn'],
 initMeasurements = window.innerWidth + 'x' + window.innerHeight,
 bubbleRow = document.querySelector('.bubble-row');
 let startX;
@@ -8,7 +8,7 @@ adjCSS('imgWidth', window.innerWidth);
 adjCSS('imgHeight', window.innerHeight);
 
 queries.forEach(function(query) {
-    bubbleRow.innerHTML += `<div class="bubble"></div>`;
+    bubbleRow.innerHTML += `<div class="bubble"><div class="marker"></div></div>`;
 });
 
 queries.forEach(function(query) {
@@ -19,7 +19,7 @@ document.querySelector('.slide').classList.add('active');
 document.querySelector('.bubble').classList.add('active');
 let slides = document.querySelectorAll('.slide');
 let bubbles = document.querySelectorAll('.bubble');
-[].forEach.call(bubbles, function(e){e.addEventListener('click', bubbleChange, false)});
+[].forEach.call(bubbles, function(e){e.addEventListener('click', bubbleChange, true)});
 
 // shifts two css variables on resize
 window.addEventListener('resize', function() {
