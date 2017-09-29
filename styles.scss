@@ -10,70 +10,92 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-}
-.carousel-container {
-    margin: 0;
-    padding: 0;
-    .carousel {
-        display: inline-block;
+    .bubble-row {
+        z-index: 100000000;
         position: absolute;
-        top: 0;
-        left: 0;
+        bottom: 10px;
+        left: calc(var(--imgWidth)/2);
+        transform: translateX(-50%);
+        .bubble {
+            display: inline-block;
+            background-color: rgb(255, 255, 255);
+            opacity: 0.3;
+            border-radius: 10px;
+            margin-left: 10px;
+            width: 12px;
+            height: 12px;
+        }
+        .bubble.active {
+            opacity: 0.9;
+            background-color: rgb(255, 255, 255);
+        }
+    }
+    .carousel-container {
+        margin: 0;
         padding: 0;
-        .slide {
-            width: var(--imgWidth);
-            height: var(--imgHeight);
+        .carousel {
+            display: inline-block;
             position: absolute;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .slide.active {
-            z-index: 100;
-            opacity: 1;
-        }
-
-        .carousel-controls {
-            .go-right, .go-left {
-                position: absolute;
-                text-align: center;
-                width: calc( var(--imgWidth) / 10);
+            top: 0;
+            left: 0;
+            padding: 0;
+            .slide {
+                width: var(--imgWidth);
                 height: var(--imgHeight);
-                z-index: 1000;
-                color: black;
-                cursor: pointer;
-                transition: 0.2s;
-                transition: background-color 0.19s ease-in-out;
-                &:hover {
-                    i {
-                        opacity: 1;
+                position: absolute;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+            }
+            .slide.active {
+                z-index: 100;
+                opacity: 1;
+            }
+
+            .carousel-controls {
+                .go-right, .go-left {
+                    position: absolute;
+                    text-align: center;
+                    width: calc( var(--imgWidth) / 10);
+                    height: var(--imgHeight);
+                    z-index: 1000;
+                    color: black;
+                    cursor: pointer;
+                    transition: 0.2s;
+                    transition: background-color 0.19s ease-in-out;
+                    &:hover {
+                        i {
+                            opacity: 1;
+                        }
+                        background-color: rgba(0,0,0, 0.2);
                     }
-                    background-color: rgba(0,0,0, 0.2);
+                    i {
+                        opacity: 0;
+                        transition: opacity 0.19s ease-in-out;
+                        color: white;
+                        position: relative;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
                 }
-                i {
-                    opacity: 0;
-                    transition: opacity 0.19s ease-in-out;
-                    color: white;
-                    position: relative;
-                    top: 50%;
-                    transform: translateY(-50%);
+                
+                .go-right {
+                    transform: translateX(-100%);
+                    left: var(--imgWidth);
+                    i {
+                        text-shadow: -1px 1px 0px black;
+                    } 
                 }
-            }
-            
-            .go-right {
-                transform: translateX(-100%);
-                left: var(--imgWidth);
-                i {
-                    text-shadow: -1px 1px 0px black;
-                } 
-            }
-            .go-left {
-                i {
-                    text-shadow: 1px 1px 0px black;
+                .go-left {
+                    i {
+                        text-shadow: 1px 1px 0px black;
+                    }
                 }
             }
         }
     }
-}
+        background-color: #222;
+    }
+
 
 *.unselectable {
     -moz-user-select: -moz-none;
