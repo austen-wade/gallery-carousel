@@ -16,6 +16,8 @@ body {
         bottom: 10px;
         left: calc(var(--imgWidth)/2);
         transform: translateX(-50%);
+        width: var(--imgWidth);
+        text-align: center;
         .bubble {
             display: inline-block;
             background-color: rgb(255, 255, 255);
