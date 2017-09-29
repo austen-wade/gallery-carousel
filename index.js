@@ -1,5 +1,5 @@
 const carousel = document.querySelector('.carousel'),
-queries = ['rain', 'mountain', 'snow', 'desert', 'ocean'],
+queries = ['rain', 'mountain', 'snow', 'desert', 'ocean', 'forest', 'garden', 'field', 'sand'],
 initMeasurements = window.innerWidth + 'x' + window.innerHeight;
 let startX;
 
@@ -73,6 +73,7 @@ function touch2Mouse(e) {
 function moveSlide(direction) {
     for (i = 0; i < slides.length; i++) {
         if (slides[i].classList.contains('active')) {
+
             // removes active from current slide
             slides[i].classList.remove('active');
 
