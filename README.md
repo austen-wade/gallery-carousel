@@ -8,3 +8,5 @@ Javascript will get the width and height of the browser and request images to pu
 ## See it live
 Live demo of image gallery can be found at:
 http://aw-gallery.surge.sh/
+
+![aw-gallery-img](https://user-images.githubusercontent.com/20980469/30999898-2490feba-a495-11e7-91f7-54c75c0b3f43.png)
