@@ -20,7 +20,7 @@ body {
         top: 0;
         left: 0;
         padding: 0;
-        .slide {       
+        .slide {
             width: var(--imgWidth);
             height: var(--imgHeight);
             position: absolute;
@@ -73,4 +73,17 @@ body {
             }
         }
     }
+}
+
+*.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+ 
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
 }
