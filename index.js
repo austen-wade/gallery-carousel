@@ -1,6 +1,6 @@
 const carousel = document.querySelector('.carousel'),
 queries = ['sun+sky', 'sun+mountain', 'sun+snow', 'sun+desert', 'sun+ocean', 'sun+forest', 'sun+winter', 'sun+field', 'sun+autumn'],
-initMeasurements = window.innerWidth + 'x' + window.innerHeight,
+initMeasurements = window.screen.availWidth + 'x' + window.screen.availWidth,
 bubbleRow = document.querySelector('.bubble-row');
 let startX;
 
@@ -12,7 +12,7 @@ queries.forEach(function(query) {
 });
 
 queries.forEach(function(query) {
-    carousel.innerHTML += `<div class="slide" style="background: #222 url('http://source.unsplash.com/random/`+ initMeasurements + '?' + query + `') no-repeat center; background-size: contain;"></div>`;
+    carousel.innerHTML += `<div class="slide" style="background: #222 url('http://source.unsplash.com/random/`+ initMeasurements + '?' + query + `') no-repeat center; background-size: cover;"></div>`;
 });
 
 document.querySelector('.slide').classList.add('active');
