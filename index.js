@@ -4,8 +4,7 @@ initMeasurements = window.screen.availWidth + 'x' + window.screen.availHeight,
 bubbleRow = document.querySelector('.bubble-row'),
 rightControl = document.querySelector('.go-right'),
 leftControl = document.querySelector('.go-left');
-
-let startX;
+let startX; // variable for touch ui
 
 setCSSVariables();
 [].forEach.call(queries, function(e) { addMarkerToHTML(); addSlideToHTML(e) });
@@ -16,6 +15,7 @@ const slides = document.querySelectorAll('.slide'),
 bubbles = document.querySelectorAll('.bubble');
 [].forEach.call(bubbles, function(e) { e.addEventListener('click', bubbleChange, true) });
 
+// set css variables everytime window size changes
 window.addEventListener('resize', function() {
     setCSSVariables();
 });
