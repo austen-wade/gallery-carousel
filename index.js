@@ -36,6 +36,7 @@ carousel.addEventListener("touchmove", touch2Mouse, true);
 carousel.addEventListener("touchend", touch2Mouse, true);
 carousel.addEventListener('mousedown', mousedownHandler, true);
 
+window.setInterval(function() {moveSlide('right', slides)} , 4000);
 
 function mousedownHandler(e) {
     startX = e.clientX;
