@@ -1,39 +1,26 @@
 const carousel = document.querySelector('.carousel'),
 queries = ['sky', 'sun+mountain', 'snow', 'sun+desert', 'sun+ocean', 'sun+forest', 'sun+winter', 'sun+field', 'autumn'],
-initMeasurements = window.screen.availWidth + 'x' + window.screen.availWidth,
-bubbleRow = document.querySelector('.bubble-row');
+initMeasurements = window.screen.availWidth + 'x' + window.screen.availHeight,
+bubbleRow = document.querySelector('.bubble-row'),
+rightControl = document.querySelector('.go-right'),
+leftControl = document.querySelector('.go-left');
+
 let startX;
 
-adjCSS('img-width', window.innerWidth);
-adjCSS('img-height', window.innerHeight);
+setCSSVariables();
+[].forEach.call(queries, function(e) { addMarkerToHTML(); addSlideToHTML(e) });
+setActive('.slide');
+setActive('.bubble');
 
-// render marker for each query
-queries.forEach(function(query) {
-    addMarkerToHTML();
-});
-
-// render slide for each query
-queries.forEach(function(query) {
-    addSlideToHTML(query);
-});
-
-// init active class
-setActive(document.querySelector('.slide'));
-setActive(document.querySelector('.bubble'));
-
-let slides = document.querySelectorAll('.slide'), 
+const slides = document.querySelectorAll('.slide'), 
 bubbles = document.querySelectorAll('.bubble');
-[].forEach.call(bubbles, function(e){e.addEventListener('click', bubbleChange, true)});
+[].forEach.call(bubbles, function(e) { e.addEventListener('click', bubbleChange, true) });
 
-// shifts two css variables on resize
 window.addEventListener('resize', function() {
-    adjCSS('img-width', window.innerWidth);
-    adjCSS('img-height', window.innerHeight);
+    setCSSVariables();
 });
 
 // make side arrow buttons work
-const rightControl = document.querySelector('.go-right'),
-leftControl = document.querySelector('.go-left');
 rightControl.addEventListener('click', function() { moveSlide('right', slides) });
 leftControl.addEventListener('click', function() { moveSlide('left', slides) });
 
@@ -134,6 +121,11 @@ function addSlideToHTML(query) {
 function addMarkerToHTML() {
     bubbleRow.innerHTML += `<div class="bubble"><div class="marker"></div></div>`;
 }
-function setActive(target) {
+function setActive(selector) {
+    const target = document.querySelector(selector);
     target.classList.add('active')
+};
+function setCSSVariables() {
+    adjCSS('img-width', window.innerWidth);
+    adjCSS('img-height', window.innerHeight);;
 };
