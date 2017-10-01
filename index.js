@@ -1,24 +1,28 @@
 const carousel = document.querySelector('.carousel'),
-queries = ['sun+sky', 'sun+mountain', 'sun+snow', 'sun+desert', 'sun+ocean', 'sun+forest', 'sun+winter', 'sun+field', 'sun+autumn'],
-initMeasurements = window.innerWidth + 'x' + window.innerHeight,
+queries = ['sky', 'sun+mountain', 'snow', 'sun+desert', 'sun+ocean', 'sun+forest', 'sun+winter', 'sun+field', 'autumn'],
+initMeasurements = window.screen.availWidth + 'x' + window.screen.availWidth,
 bubbleRow = document.querySelector('.bubble-row');
 let startX;
 
 adjCSS('imgWidth', window.innerWidth);
 adjCSS('imgHeight', window.innerHeight);
 
+// render marker for each query
 queries.forEach(function(query) {
-    bubbleRow.innerHTML += `<div class="bubble"><div class="marker"></div></div>`;
+    addMarkerToHTML();
 });
 
+// render slide for each query
 queries.forEach(function(query) {
-    carousel.innerHTML += `<div class="slide" style="background: #222 url('http://source.unsplash.com/random/`+ initMeasurements + '?' + query + `') no-repeat center; background-size: contain;"></div>`;
+    addSlideToHTML(query);
 });
 
-document.querySelector('.slide').classList.add('active');
-document.querySelector('.bubble').classList.add('active');
-let slides = document.querySelectorAll('.slide');
-let bubbles = document.querySelectorAll('.bubble');
+// init active class
+setActive(document.querySelector('.slide'));
+setActive(document.querySelector('.bubble'));
+
+let slides = document.querySelectorAll('.slide'), 
+bubbles = document.querySelectorAll('.bubble');
 [].forEach.call(bubbles, function(e){e.addEventListener('click', bubbleChange, true)});
 
 // shifts two css variables on resize
@@ -124,3 +128,12 @@ function bubbleChange(e) {
     node.classList.add('active');
     slides[i].classList.add('active');
 }
+function addSlideToHTML(query) {
+    carousel.innerHTML += `<div class="slide" style="background: #222 url('http://source.unsplash.com/random/`+ initMeasurements + '?' + query + `') no-repeat center; background-size: cover;"></div>`;
+}
+function addMarkerToHTML() {
+    bubbleRow.innerHTML += `<div class="bubble"><div class="marker"></div></div>`;
+}
+function setActive(target) {
+    target.classList.add('active')
+};
