@@ -4,8 +4,8 @@ initMeasurements = window.screen.availWidth + 'x' + window.screen.availWidth,
 bubbleRow = document.querySelector('.bubble-row');
 let startX;
 
-adjCSS('imgWidth', window.innerWidth);
-adjCSS('imgHeight', window.innerHeight);
+adjCSS('img-width', window.innerWidth);
+adjCSS('img-height', window.innerHeight);
 
 // render marker for each query
 queries.forEach(function(query) {
@@ -27,8 +27,8 @@ bubbles = document.querySelectorAll('.bubble');
 
 // shifts two css variables on resize
 window.addEventListener('resize', function() {
-    adjCSS('imgWidth', window.innerWidth);
-    adjCSS('imgHeight', window.innerHeight);
+    adjCSS('img-width', window.innerWidth);
+    adjCSS('img-height', window.innerHeight);
 });
 
 // make side arrow buttons work

@@ -19,8 +19,8 @@ html {
     font-family: 'Lato', sans-serif;
     background-color: #222;
     &:root {
-        --imgHeight: 0;
-        --imgWidth: 0;
+        --img-height: 0;
+        --img-width: 0;
     }
 
     body {        
@@ -28,7 +28,7 @@ html {
         .control-row {
             @include w-then-h(auto, 50px);
             position: relative;
-            top: var(--imgHeight);
+            top: var(--img-height);
             padding-left: 20%;
             padding-right: 20%;
             background-color: rgba(0, 0, 0, 0.8);
@@ -87,7 +87,7 @@ html {
             @include spacing-reset();
             .carousel {
                 .slide {
-                    @include w-then-h(var(--imgWidth), var(--imgHeight));
+                    @include w-then-h(var(--img-width), var(--img-height));
                     position: absolute;
                     opacity: 0;
                     transition: opacity 0.5s ease-in-out;
@@ -116,7 +116,7 @@ html {
         }
     }
     .bubble-row {
-        left: calc(var(--imgWidth)/2);
+        left: calc(var(--img-width)/2);
         @include w-then-h(500px, auto);
         .bubble {
             &:hover {
@@ -136,6 +136,6 @@ html {
     }
     .bubble-row {
         @include w-then-h(101%, auto);
-        left: calc(var(--imgWidth)/2);
+        left: calc(var(--img-width)/2);
     }
 }
