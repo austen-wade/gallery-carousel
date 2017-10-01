@@ -1,142 +1,128 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300');
-html {
-    background-color: #222;
+$pink-highlight: rgb(180, 30, 100);
+@function mint-green($transparency: 1) {
+    @return rgba(40, 180, 120, $transparency);
 }
-:root {
-    --imgHeight: 0;
-    --imgWidth: 0;
-}
-
-img {
-    background-color: rgb(40, 180, 120);
-    position: relative;
-    top: 3px;
-    // box-shadow: 1px 1px 10px rgb(40, 180, 120);
-}
-img.go-left-chevron {
-    transform: rotate(180deg);
-}
-
-body {
+@mixin spacing-reset() {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    .control-row {
-        padding-left: 20%;
-        padding-right: 20%;
-        background-color: rgba(0, 0, 0, 0.8);
-        position: relative;
-        transform: translateX(-50%);
-        transform: translateY(-100%);
-        height: 50px;
-        text-align: center;
-        top: var(--imgHeight);
-        .control { 
-            background-color: rgba(40, 180, 120, 0.0);
-            height: 40px;
-            position: absolute;
-            padding-top: 10px;
-            top: 0;
-            font-family: 'Lato', sans-serif;
-            font-size: 1.3em;
-            display: inline-block; 
-            color: rgb(40, 180, 120);
-            width: 20%;
+}
+@mixin m-pointer() {
+    cursor: pointer;
+}
+@mixin w-then-h($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    background-color: #222;
+    &:root {
+        --imgHeight: 0;
+        --imgWidth: 0;
+    }
+
+    body {        
+        @include spacing-reset();
+        .control-row {
+            @include w-then-h(auto, 50px);
+            position: relative;
+            top: var(--imgHeight);
+            padding-left: 20%;
+            padding-right: 20%;
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: translateX(-50%);
+            transform: translateY(-100%);
             text-align: center;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-         }
-        .go-right { 
-            @extend .control; 
-            right: 0;
-        }
-        .go-left {
-            @extend .control; 
-            left: 0;
-        }
-        .bubble-row {
-            display: inline;
-            .bubble {
-                position: relative;
-                top: 50%;
-                transform: translateY(-57%);
-                cursor: pointer;
-                display: inline-block;
-                opacity: 0.3;
-                width: 20px;
-                height: 20px;
-                .marker {
-                    pointer-events: none;
-                    position: absolute;
+            .control { 
+                @include w-then-h(20%, 40px);
+                position: absolute;
+                top: 0;
+                background-color: none;
+                padding-top: 10px;
+                font-size: 1.3em;
+                display: inline-block; 
+                color: mint-green();
+                text-align: center;
+                transition: all 0.2s ease-in-out;
+             }
+            .go-right { 
+                @extend .control; 
+                right: 0;
+            }
+            .go-left {
+                @extend .control; 
+                left: 0;
+            }
+            .bubble-row {
+                display: inline;
+                .bubble {
+                    @include w-then-h(20px);
+                    position: relative;
                     top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    height:60%;
-                    width: 60%;
-                    border: 1px solid rgb(40, 180, 120);
-                    transition: border-color 0.2s ease-in-out;
+                    transform: translateY(-57%);
+                    display: inline-block;
+                    opacity: 0.3;
+                    .marker {
+                        @include w-then-h(60%);
+                        pointer-events: none;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        border: 1px solid mint-green();
+                        transition: border-color 0.2s ease-in-out;
+                    }
+                }
+                .bubble.active {
+                    opacity: 1;
+                    .marker {
+                        @include w-then-h(80%);
+                    }
                 }
             }
         }
-        .bubble.active {
-            opacity: 1;
-            .marker {
-                height: 80%;
-                width: 80%;
+        .carousel-container {
+            @include spacing-reset();
+            .carousel {
+                .slide {
+                    @include w-then-h(var(--imgWidth), var(--imgHeight));
+                    position: absolute;
+                    opacity: 0;
+                    transition: opacity 0.5s ease-in-out;
+                }
+                .slide.active {
+                    opacity: 1;
+                }
             }
         }
     }
-    .carousel-container {
-        margin: 0;
-        padding: 0;
-        .carousel {
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 0;
-            .slide {
-                width: var(--imgWidth);
-                height: var(--imgHeight);
-                position: absolute;
-                opacity: 0;
-                transition: opacity 0.5s ease-in-out;
-            }
-            .slide.active {
-                opacity: 1;
-            }
-        }
-    }
-        background-color: #222;
-    }
-
+}
 
 *.unselectable {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
     -webkit-user-select: none;
- 
-    /*
-      Introduced in IE 10.
-      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-    */
     -ms-user-select: none;
     user-select: none;
 }
 
-@media (min-width: 600px)  {
+@media (min-width: 700px)  {
     .control {
         &:hover {
-            background-color: rgba(40, 180, 120, 0.1);
+            background-color: mint-green(0.2);
+            @include m-pointer();
         }
     }
     .bubble-row {
         left: calc(var(--imgWidth)/2);
-        width: 500px;
+        @include w-then-h(500px, auto);
         .bubble {
             &:hover {
+                @include m-pointer();
                 .marker {
-                    border: 1px solid rgb(180, 30, 100);
+                    border: 1px solid $pink-highlight;
                 }
             }
         }
@@ -149,7 +135,7 @@ body {
         overflow-x: hidden;
     }
     .bubble-row {
+        @include w-then-h(101%, auto);
         left: calc(var(--imgWidth)/2);
-        width: 101%;
     }
 }
