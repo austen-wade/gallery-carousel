@@ -97,12 +97,12 @@ const Carousel = (function() {
       }
     }
     if (target == slides) {
-      moveSlide(direction, bubbles);
+      methods.moveSlide(direction, bubbles);
     }
 
     clearInterval(slideTimer);
     slideTimer = window.setInterval(function() {
-      moveSlide("right", slides);
+      methods.moveSlide("right", slides);
     }, 6000);
   };
   methods.adjustCss = function(name, value) {
