@@ -1,0 +1,49 @@
+@import "styles/globals";
+@import "styles/carousel-container";
+@import "styles/carousel";
+@import "styles/control-row";
+@import "styles/bubble-row";
+
+body {
+  @include spacing-reset();
+}
+
+*.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 700px) {
+  .control {
+    &:hover {
+      background-color: mint-green(0.2);
+      @include m-pointer();
+    }
+  }
+  .bubble-row {
+    left: calc(var(--img-width) / 2);
+    @include w-then-h(500px, auto);
+    .bubble {
+      &:hover {
+        @include m-pointer();
+        .marker {
+          border: 1px solid $pink-highlight;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .bubble-row {
+    @include w-then-h(101%, auto);
+    left: calc(var(--img-width) / 2);
+  }
+}

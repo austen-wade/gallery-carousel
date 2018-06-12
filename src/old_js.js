@@ -2,8 +2,8 @@ const carousel = document.querySelector('.carousel'),
 queries = ['sky', 'sun+mountain', 'snow', 'sun+desert', 'sun+ocean', 'sun+forest', 'sun+winter', 'sun+field', 'autumn'],
 initMeasurements = window.screen.availWidth + 'x' + window.screen.availHeight,
 bubbleRow = document.querySelector('.bubble-row'),
-rightControl = document.querySelector('.go-right'),
-leftControl = document.querySelector('.go-left');
+rightControl = document.querySelector('.control.-right'),
+leftControl = document.querySelector('.control.-left');
 let startX; // variable for touch ui
 
 setCSSVariables();

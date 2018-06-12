@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
+
+$pink-highlight: rgb(180, 30, 100);
+
+@function mint-green($transparency: 1) {
+  @return rgba(40, 180, 120, $transparency);
+}
+
+@mixin spacing-reset() {
+  margin: 0;
+  padding: 0;
+}
+@mixin m-pointer() {
+  cursor: pointer;
+}
+@mixin w-then-h($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+html {
+  font-family: "Lato", sans-serif;
+  background-color: #222;
+  &:root {
+    --img-height: 0;
+    --img-width: 0;
+  }
+}
