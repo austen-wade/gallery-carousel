@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
+html {
+  font-family: "Lato", sans-serif;
+  background-color: #222; }
+  html:root {
+    --img-height: 0;
+    --img-width: 0; }
+
+.carousel-container {
+  margin: 0;
+  padding: 0; }
+  .carousel-container .carousel .slide {
+    width: var(--img-width);
+    height: var(--img-height);
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; }
+  .carousel-container .carousel .slide.active {
+    opacity: 1; }
+
+.control-row {
+  position: relative;
+  top: var(--img-height);
+  padding-left: 20%;
+  padding-right: 20%;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  text-align: center;
+  width: auto;
+  height: 50px; }
+  .control-row .control {
+    width: 20%;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    background-color: none;
+    padding-top: 10px;
+    font-size: 1.3em;
+    display: inline-block;
+    color: #28b478;
+    text-align: center;
+    transition: all 0.2s ease-in-out; }
+    .control-row .control.-right {
+      right: 0; }
+    .control-row .control.-left {
+      left: 0; }
+  .control-row .bubble-row {
+    display: inline; }
+    .control-row .bubble-row .bubble {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-57%);
+              transform: translateY(-57%);
+      display: inline-block;
+      opacity: 0.3; }
+      .control-row .bubble-row .bubble .marker {
+        width: 60%;
+        height: 60%;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        border: 1px solid #28b478;
+        transition: border-color 0.2s ease-in-out; }
+    .control-row .bubble-row .bubble.active {
+      opacity: 1; }
+      .control-row .bubble-row .bubble.active .marker {
+        width: 80%;
+        height: 80%; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+*.unselectable {
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+@media (min-width: 700px) {
+  .control:hover {
+    background-color: rgba(40, 180, 120, 0.2);
+    cursor: pointer; }
+  .bubble-row {
+    left: calc(var(--img-width) / 2);
+    width: 500px;
+    height: auto; }
+    .bubble-row .bubble:hover {
+      cursor: pointer; }
+      .bubble-row .bubble:hover .marker {
+        border: 1px solid #b41e64; } }
+
+@media (max-width: 600px) {
+  html {
+    max-width: 100%;
+    overflow-x: hidden; }
+  .bubble-row {
+    width: 101%;
+    height: auto;
+    left: calc(var(--img-width) / 2); } }
