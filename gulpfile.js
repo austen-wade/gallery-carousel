@@ -1,10 +1,10 @@
-var gulp = require("gulp");
-var browserSync = require("browser-sync");
-var csso = require("gulp-csso");
-var sourcemaps = require("gulp-sourcemaps");
-var sass = require("gulp-sass");
-var autoprefixer = require("gulp-autoprefixer");
-var concat = require("gulp-concat");
+const gulp = require("gulp"),
+  browserSync = require("browser-sync"),
+  csso = require("gulp-csso"),
+  sourcemaps = require("gulp-sourcemaps"),
+  sass = require("gulp-sass"),
+  autoprefixer = require("gulp-autoprefixer"),
+  concat = require("gulp-concat");
 
 gulp.task("sass", function() {
   return (
@@ -41,7 +41,7 @@ gulp.task("bs-reload", function() {
 gulp.task("compile-all", ["sass", "html"]);
 
 gulp.task("default", ["html", "sass", "js", "browser-sync"], function() {
-  gulp.src("src/chevron.png").pipe(gulp.dest("dest"))
+  gulp.src("src/chevron.png").pipe(gulp.dest("dest"));
   gulp.watch("src/**/*.scss", ["sass"]);
   gulp.watch("src/**/*.html", ["html", "bs-reload"]);
   gulp.watch("src/**/*.js", ["js", "bs-reload"]);
