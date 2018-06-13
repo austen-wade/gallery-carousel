@@ -20,21 +20,21 @@ const Carousel = (function() {
   let startx,
     methods = {};
 
+    methods.mouseupHandler = function(e) {
+      if (startX > e.clientX && e.clientX < window.innerWidth / 2) {
+        methods.moveSlide("right", slides);
+      }
+      if (startX < e.clientX && e.clientX > window.innerWidth / 2) {
+        methods.moveSlide("left", slides);
+      }
+    };
   methods.mousedownHandler = function(e) {
     startX = e.clientX;
-    carousel.addEventListener("mouseup", mouseupHandler, true);
-  };
-  methods.mouseupHandler = function(e) {
-    if (startX > e.clientX && e.clientX < window.innerWidth / 2) {
-      moveSlide("right", slides);
-    }
-    if (startX < e.clientX && e.clientX > window.innerWidth / 2) {
-      moveSlide("left", slides);
-    }
+    carousel.addEventListener("mouseup", methods.mouseupHandler, true);
   };
   methods.touchHandler = function(e) {
-    var theTouch = e.changedTouches[0];
-    var mouseEv;
+    let theTouch = e.changedTouches[0],
+        mouseEv;
 
     switch (e.type) {
       case "touchstart":
@@ -50,7 +50,7 @@ const Carousel = (function() {
         return;
     }
 
-    var mouseEvent = document.createEvent("MouseEvent");
+    let mouseEvent = document.createEvent("MouseEvent");
     mouseEvent.initMouseEvent(
       mouseEv,
       true,
@@ -113,7 +113,7 @@ const Carousel = (function() {
     document.querySelector(".bubble.active").classList.remove("active");
     document.querySelector(".slide.active").classList.remove("active");
 
-    var i = 0,
+    let i = 0,
       e = node;
     while ((e = e.previousSibling)) {
       ++i;
@@ -142,6 +142,7 @@ const Carousel = (function() {
     methods.adjustCss("img-height", window.innerHeight);
   };
 
+  // on page load
   methods.setImageSize();
   [].forEach.call(queries, function(query) {
     methods.addMarker();

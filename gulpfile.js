@@ -41,6 +41,7 @@ gulp.task("bs-reload", function() {
 gulp.task("compile-all", ["sass", "html"]);
 
 gulp.task("default", ["html", "sass", "js", "browser-sync"], function() {
+  gulp.src("src/chevron.png").pipe(gulp.dest("dest"))
   gulp.watch("src/**/*.scss", ["sass"]);
   gulp.watch("src/**/*.html", ["html", "bs-reload"]);
   gulp.watch("src/**/*.js", ["js", "bs-reload"]);

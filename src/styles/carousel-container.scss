@@ -1,15 +1,3 @@
 .carousel-container {
-    @include spacing-reset();
-  
-    .carousel {
-      .slide {
-        @include w-then-h(var(--img-width), var(--img-height));
-        position: absolute;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-      }
-      .slide.active {
-        opacity: 1;
-      }
-    }
-  }
+  @include spacing-reset();
+}

@@ -1,64 +1,47 @@
 .control-row {
-    position: relative;
-    top: var(--img-height);
-    padding-left: 20%;
-    padding-right: 20%;
-    background-color: rgba(0, 0, 0, 0.8);
-    transform: translateX(-50%);
-    transform: translateY(-100%);
-    text-align: center;
-  
-    @include w-then-h(auto, 50px);
-  
-    .control {
-      @include w-then-h(20%, 40px);
+  top: var(--img-height);
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-100%);
+  text-align: center;
+
+  @include w-then-h(auto, 50px);
+
+  > .control {
+    @include w-then-h(20%, 40px);
+    position: absolute;
+    padding-top: 10px;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+
+    &:after {
       position: absolute;
-      top: 0;
-      background-color: none;
-      padding-top: 10px;
-      font-size: 1.3em;
-      display: inline-block;
-      color: mint-green();
-      text-align: center;
-      transition: all 0.2s ease-in-out;
-  
-      &.-right {
-        right: 0;
+      content: "";
+      background: {
+        image: url("chevron.png");
+        size: cover;
+        position: center center;
       }
-      &.-left {
-        left: 0;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.-right {
+      right: 0;
+
+      &:after {
+        right: 50%;
       }
     }
-  
-    .bubble-row {
-      display: inline;
-  
-      .bubble {
-        @include w-then-h(20px);
-        position: relative;
-        top: 50%;
-        transform: translateY(-57%);
-        display: inline-block;
-        opacity: 0.3;
-  
-        .marker {
-          @include w-then-h(60%);
-          pointer-events: none;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          border: 1px solid mint-green();
-          transition: border-color 0.2s ease-in-out;
-        }
-      }
-  
-      .bubble.active {
-        opacity: 1;
-  
-        .marker {
-          @include w-then-h(80%);
-        }
+    &.-left {
+      left: 0;
+
+      &:after {
+        left: 50%;
+        transform: translateY(-50%) rotate(180deg);
       }
     }
   }
+}

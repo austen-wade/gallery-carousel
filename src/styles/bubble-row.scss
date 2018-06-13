@@ -1,0 +1,31 @@
+.bubble-row {
+  display: inline;
+
+  > .bubble {
+    @include w-then-h(20px);
+    position: relative;
+    top: 50%;
+    transform: translateY(-57%);
+    display: inline-block;
+    opacity: 0.3;
+
+    > .marker {
+      @include w-then-h(60%);
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid mint-green();
+      transition: border-color 0.2s ease-in-out;
+    }
+  }
+
+  > .bubble.active {
+    opacity: 1;
+
+    > .marker {
+      @include w-then-h(80%);
+    }
+  }
+}
